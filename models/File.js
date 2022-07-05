@@ -11,9 +11,9 @@ const File = new mongoose.Schema({
     },
     password: String,
     downloadCount: {
-        type: number,   
-        default: 0,
-        required: true
+        type: Number,   
+        required: true,
+        default: 0
     }
 })
 
