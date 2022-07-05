@@ -28,7 +28,12 @@ app.post('/upload', upload.single("file"), async (req, res) => {
     res.render("index", { fileLink: `${req.headers.origin}/file/${file.id}` })
 })
 
-app.get("/file/:id", (req, res) => {
+app.get("/file/:id", async (req, res) => {
+  res.send(req.params.id)
+  const file = await File.findById(req.params.id)
+  
+  file.downloadCount++
+  await file.save()
 
 })
 
